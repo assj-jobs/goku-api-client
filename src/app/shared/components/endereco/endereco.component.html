@@ -1,0 +1,118 @@
+<div class="animated fadeIn">
+    <div class="row">
+      
+      <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <i class="fa fa-align-justify"></i> Endereços
+              </div>
+              <div class="card-body">
+                <form [formGroup]="enderecoForm">
+                  <div class="row">
+                    <div class="form-group col-sm-3">
+                      <label for="cep">CEP</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-hashtag"></i></span>
+                        </div>
+                        <input class="formControl"
+                                formControlName="cep"
+                                (keypress)="pesquisarPorCep()" 
+                                type="number" 
+                                id="cep" 
+                                name="cep" 
+                                class="form-control" 
+                                placeholder="Cep" 
+                                autocomplete="cep">
+                      </div>
+                    </div>  
+                    <div class="form-group col-sm-7">
+                      <label for="logradouro">Logradouro</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-road"></i></span>
+                        </div>
+                        <input class="formControl" formControlName="logradouro" type="text" id="logradouro" name="logradouro" class="form-control" placeholder="Logradouro (Ex.: Rua/Avenida/Travessa...)" autocomplete="logradouro">
+                      </div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <label for="numero">Número</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-home"></i></span>
+                        </div>
+                        <input  class="formControl" formControlName="numero" type="number" id="numero" name="numero" class="form-control" placeholder="Nº" autocomplete="numero">
+                      </div>
+                    </div>  
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="complemento">Complemento</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-map-pin"></i></span>
+                        </div>
+                        <input  class="formControl" formControlName="complemento" type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" autocomplete="complemento">
+                      </div>
+                    </div>  
+                    <div class="form-group col-sm-6">
+                      <label for="bairro">Bairro</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-map"></i></span>
+                          </div>
+                          <input class="formControl" formControlName="bairro" type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro" autocomplete="bairro">
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="localidade">Localidade</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                        <input class="formControl" formControlName="localidade" type="text" id="localidade" name="localidade" class="form-control" placeholder="Localidade / Cidade" autocomplete="localidade">
+                      </div>
+                    </div>  
+                    <div class="form-group col-sm-6">
+                      <label for="estado">Estado</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-map-signs"></i></span>
+                          </div>
+                          <input  class="formControl" formControlName="estado" type="text" id="estado" name="estado" class="form-control" placeholder="Estado / UF" autocomplete="estado">
+                        </div>
+                      </div>
+                  </div>
+                </form>
+                <div class="form-group form-actions text-left">
+                  <button type="submit" class="btn btn-sm btn-primary" (click)="adicionar()">Adicionar</button>
+                  <button class="btn btn-sm btn-danger"(click)="limparEndereco()">Limpar Campos</button>
+                </div>
+                <table class="table table-bordered table-striped table-sm" style="padding-left: 15px">
+                  <thead >
+                    <th *ngFor="let header of headers">{{header.th}}</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let endereco of enderecos">
+                      <td>{{ endereco?.cep }}</td>
+                      <td>{{ endereco?.logradouro }}</td>
+                      <td>{{ endereco?.numero }}</td>
+                      <td>{{ endereco?.complemento }}</td>
+                      <td>{{ endereco?.bairro }}</td>
+                      <td>{{ endereco?.localidade }}</td>
+                      <td>{{ endereco?.estado }}</td>
+                      <td class="text-center">
+                        <button class="btn btn-sm btn-danger" (click)="remover(endereco)">X</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> 
+          </div>
+        </div>
+    </div>
+    <!--/.row-->
+  </div>
+  

@@ -1,3 +1,5 @@
 export const environment = {
-  production: false
+  production: false,
+  GOKU_API: 'http://localhost:8080'
+
 };

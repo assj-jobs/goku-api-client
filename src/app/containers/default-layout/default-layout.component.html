@@ -1,12 +1,14 @@
 <app-header
   [fixed]="true"
-  [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
-  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
-  [sidebarToggler]="'lg'"
-  [asideMenuToggler]="'lg'">
+  [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 125, height: 50, alt: 'CoreUI Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 50, height: 50, alt: 'CoreUI Logo'}"
+  [sidebarToggler]="'lg'">
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item d-md-down-none">
-      
+    <span>Bem vindo(a) <b>{{userName}}</b></span>
+    <li class="nav-item">
+      <button class="btn btn-sm btn-danger" (click)="logout()">
+        <span><i class="fa fa-sign-out"></i></span>
+      </button>
     </li>
   </ul>
 </app-header>
@@ -29,5 +31,5 @@
 </div>
 <app-footer>
   <span><a href="">Goku | e-commerce</a> &copy; 2021.</span>
-  <span class="ml-auto">Powered by <a href="https://coreui.io/angular">Salviano Jr - Engº de Software Sênior</a></span>
+  <span class="ml-auto">Powered by <a href="https://www.linkedin.com/in/salviano-jr-8b554527/" target="_blank">Salviano Jr - Engº de Software Sênior</a></span>
 </app-footer>

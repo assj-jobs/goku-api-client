@@ -1,7 +1,6 @@
 import { AppAsideModule, AppBreadcrumbModule, AppHeaderModule, AppFooterModule, AppSidebarModule} from '@coreui/angular';
-import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
@@ -14,9 +13,15 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from './shared/shared.module';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
+  
     keycloak.init({
       config: {
         url: 'http://localhost:8085/auth',
@@ -28,11 +33,12 @@ function initializeKeycloak(keycloak: KeycloakService) {
         checkLoginIframeInterval: 25,
         onLoad: 'check-sso',
         silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html',
-      }
-    });
-}
-
+          window.location.origin + '/assets/silent-check-sso.html'
+      },
+      enableBearerInterceptor: true,
+      loadUserProfileAtStartUp: true
+    }); 
+} 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -47,9 +53,9 @@ const APP_CONTAINERS = [
 
 @NgModule({
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
@@ -60,6 +66,9 @@ const APP_CONTAINERS = [
     TabsModule.forRoot(),
     ChartsModule,    
     KeycloakAngularModule,
+    NgxMaskModule.forRoot(),
+    NgxSpinnerModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,
@@ -72,7 +81,7 @@ const APP_CONTAINERS = [
     provide: LocationStrategy,
     useClass: HashLocationStrategy
     },
-    {
+     {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,

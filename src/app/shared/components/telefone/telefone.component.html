@@ -1,0 +1,55 @@
+<div class="animated fadeIn">
+    <div class="row">
+      
+      <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <i class="fa fa-align-justify"></i> Telefones
+              </div>
+              <div class="card-body">
+                <form [formGroup]="telefoneForm">
+                  <div class="row">
+                    <div class="form-group col-sm-3">
+                      <label for="numero">DDD + Número do Telefone</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                        </div>
+                        <input class="formControl"
+                                formControlName="numero"
+                                type="number" 
+                                id="telefone" 
+                                name="telefone" 
+                                class="form-control" 
+                                placeholder="DDD + Nº do Telefone" 
+                                autocomplete="telefone" min="10" max="11" maxlength="11">
+                      </div>
+                    </div>  
+                    </div>  
+                </form>
+                <div class="form-group form-actions text-left">
+                  <button type="submit" class="btn btn-sm btn-primary" (click)="adicionar()">Adicionar</button>
+                  <button class="btn btn-sm btn-danger"(click)="limparTelefone()">Limpar Campos</button>
+                </div>
+                <table class="table table-bordered table-striped table-sm" style="padding-left: 15px">
+                  <thead >
+                    <th *ngFor="let header of headers">{{header.th}}</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let telefone of telefones">
+                      <td>{{ telefone?.ddd }}</td>
+                      <td>{{ telefone?.numero }}</td>
+                      <td>{{ telefone?.snAtivo }}</td>
+                      <td class="text-center">
+                        <button class="btn btn-sm btn-danger" (click)="remover(telefone)">X</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> 
+          </div>
+        </div>
+    </div>
+    <!--/.row-->
+  </div>
+  

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { PacienteComponent } from './paciente/paciente.component';
+import { UsuarioComponent } from './usuario/usuario.component'
 
 
 const routes: Routes = [
@@ -12,14 +11,10 @@ const routes: Routes = [
     },
     children: [
       {
-        path: '',
-        redirectTo: 'paciente'
-      },
-      {
-        path: 'paciente',
-        component: PacienteComponent,
+        path: 'usuario',
+        component: UsuarioComponent,
         data: {
-          title: 'Pacientes'
+          title: 'Usuários'
         }
       }
     ]

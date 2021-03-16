@@ -3,10 +3,35 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
+import { AuthGuard } from './security/app.auth-guard';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
+import { HomeComponent } from './views/home/home.component';
 
 export const routes: Routes = [
+  
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    data: {
+      title: 'Home'
+    },
+    canActivate:[AuthGuard],
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        data: {
+          title: 'Welcome!'
+        }
+      },
+      {
+        path: 'cadastro',
+        loadChildren: () => import('./views/cadastros/cadastro.module').then(m=> m.CadastroModule),
+        canActivate: [AuthGuard]
+      },
+    ]
+  },
   {
     path: '404',
     component: P404Component,
@@ -20,23 +45,6 @@ export const routes: Routes = [
     data: {
       title: 'Page 500'
     }
-  },
-  {
-    path: '',
-    component: DefaultLayoutComponent,
-    data: {
-      title: 'Home'
-    },
-    children: [
-      {
-        path: 'cadastro',
-        loadChildren: () => import('./views/cadastros/cadastro.module').then(m=> m.CadastroModule)
-      },
-      {
-        path: 'base',
-        loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
-      }
-    ]
   },
   { path: '**', component: P404Component }
 ];

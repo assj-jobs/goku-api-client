@@ -1,0 +1,51 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-header">
+            Cadastro de Usuários
+          </div>
+          <div class="card-body">
+            <form action="" method="post">
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Nome Completo">
+                  </div>
+                </div>
+                <div class="form-group col-sm-2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <input type="text" id="nascimento" name="nascimento" class="form-control" placeholder="Data de Nascimento">
+                  </div>
+                </div>
+                <div class="form-group col-sm-4">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="email">
+                  </div>
+                </div>
+              </div>
+              <!--TELEFONE COMPONENT-->
+              <app-telefone></app-telefone>
+              <!--ENDERECO COMPONENT-->
+              <app-endereco></app-endereco>
+              <div class="form-group form-actions text-right">
+                <button type="submit" class="btn btn-sm btn-success" (click)="cadastrar()">Cadastrar</button>
+                <button class="btn btn-sm btn-warning">Limpar Campos</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+  

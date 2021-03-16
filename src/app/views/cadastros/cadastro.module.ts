@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PacienteComponent } from './paciente/paciente.component';
 import { FormsModule } from '@angular/forms';
 import { CadastroRoutingModule } from './cadastro-routing.module';
-
-
+import { UsuarioComponent } from './usuario/usuario.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
-    PacienteComponent
+    UsuarioComponent
   ],
   imports: [
-    CommonModule,
     FormsModule,
-    CadastroRoutingModule
+    CadastroRoutingModule,
+    SharedModule
   ]
 })
-export class CadastroModule { }
+export class CadastroModule { 
+  
+}
