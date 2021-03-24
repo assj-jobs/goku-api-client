@@ -17,13 +17,14 @@ import { P500Component } from './views/error/500.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './views/home/home.module';
+import { environment } from '../environments/environment';
 
 export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
   
     keycloak.init({
       config: {
-        url: 'https://54.165.133.5:8080/auth',
+        url: `${environment.KEYCLOAK_API}/auth`,
         realm: 'goku',
         clientId: 'goku-web-client',
       },
@@ -57,13 +58,13 @@ const APP_CONTAINERS = [
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
-    PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,    
     KeycloakAngularModule,
     SharedModule,
-    HomeModule
+    HomeModule,
+    PerfectScrollbarModule,
   ],
   declarations: [
     AppComponent,

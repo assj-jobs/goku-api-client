@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core'
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { EnderecoComponent } from './components/endereco/endereco.component';
 import { EnderecoService } from './components/endereco/endereco.service';
 import { TelefoneComponent } from './components/telefone/telefone.component';
@@ -9,7 +10,8 @@ import { TelefoneComponent } from './components/telefone/telefone.component';
     imports: [ 
         CommonModule,
         FormsModule, 
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        PerfectScrollbarModule
     ],
     declarations: 
     [
