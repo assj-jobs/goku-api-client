@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Telefone } from "../../model/Telefone";
 
@@ -12,6 +12,8 @@ import { Telefone } from "../../model/Telefone";
     telefoneForm: FormGroup
     telefone: Telefone
     @Output() telefones: Telefone[] = new Array<Telefone>();
+
+    cellPhonePattern = /^(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4,5}$/
     
     public headers: any[] = [
         { "th": "DDD" },
@@ -32,7 +34,7 @@ import { Telefone } from "../../model/Telefone";
     createForm() {
       this.telefoneForm = this.formBuilder.group({
         id: this.formBuilder.control(''),
-        numero: this.formBuilder.control('')
+        numero: this.formBuilder.control('', [Validators.required, Validators.pattern(this.cellPhonePattern)])
       });
     }
   

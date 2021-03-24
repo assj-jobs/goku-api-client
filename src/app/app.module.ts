@@ -13,10 +13,8 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { NgxMaskModule } from 'ngx-mask';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -24,7 +22,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
   
     keycloak.init({
       config: {
-        url: 'http://localhost:8085/auth',
+        url: 'http://54.165.133.5:8080/auth',
         realm: 'goku',
         clientId: 'goku-web-client',
       },
@@ -44,12 +42,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
-
-
 const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
-
 
 @NgModule({
   imports: [
@@ -66,7 +61,6 @@ const APP_CONTAINERS = [
     TabsModule.forRoot(),
     ChartsModule,    
     KeycloakAngularModule,
-    NgxMaskModule.forRoot(),
     NgxSpinnerModule,
     SharedModule
   ],

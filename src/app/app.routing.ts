@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RoleGuardService as RoleGuard } from './security/app.role-guard.service';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { AuthGuard } from './security/app.auth-guard';
+import { AuthGuardService as AuthGuard} from './security/app.auth-guard.service';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { HomeComponent } from './views/home/home.component';
@@ -28,7 +29,10 @@ export const routes: Routes = [
       {
         path: 'cadastro',
         loadChildren: () => import('./views/cadastros/cadastro.module').then(m=> m.CadastroModule),
-        canActivate: [AuthGuard]
+        canActivate: [RoleGuard],
+        data: { 
+          expectedRole: 'admin'
+        } 
       },
     ]
   },

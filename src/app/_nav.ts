@@ -9,7 +9,7 @@ export const navItems: INavData[] = [
       {
         name: 'Usuário',
         url: '/cadastro/usuario',
-        icon: 'icon-user'
+        icon: 'icon-user',
       },
     ]
   }
