@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/goku-ecommerce/goku-ecommerce-client.git"
+    "url": "git+https://github.com/assj-jobs/goku-ecommerce-client.git"
   },
   "author": "Antonio Salviano Soares Junior - ME",
   "license": "ISC",
