@@ -1,6 +1,6 @@
 import { AppAsideModule, AppBreadcrumbModule, AppHeaderModule, AppFooterModule, AppSidebarModule} from '@coreui/angular';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
@@ -16,8 +16,9 @@ import { P500Component } from './views/error/500.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './views/home/home.module';
 
-function initializeKeycloak(keycloak: KeycloakService) {
+export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
   
     keycloak.init({
@@ -62,7 +63,8 @@ const APP_CONTAINERS = [
     ChartsModule,    
     KeycloakAngularModule,
     NgxSpinnerModule,
-    SharedModule
+    SharedModule,
+    HomeModule
   ],
   declarations: [
     AppComponent,
