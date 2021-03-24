@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NgxSpinnerService } from "ngx-spinner";
 import { Telefone } from "../../model/Telefone";
 
 @Component({
@@ -23,7 +22,6 @@ import { Telefone } from "../../model/Telefone";
     ];
    
     constructor(
-      private spinner: NgxSpinnerService, 
       private formBuilder: FormBuilder
     ) {} 
   

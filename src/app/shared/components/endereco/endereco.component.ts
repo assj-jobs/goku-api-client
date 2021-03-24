@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { EventEmitter } from "events";
-import { NgxSpinnerService } from "ngx-spinner";
 import { Endereco } from "../../model/Endereco";
 import { EnderecoService } from "./endereco.service";
 
@@ -28,7 +27,6 @@ export class EnderecoComponent implements OnInit {
   ];
  
   constructor(
-    private spinner: NgxSpinnerService, 
     private service: EnderecoService,
     private formBuilder: FormBuilder
   ) {} 
@@ -57,7 +55,6 @@ export class EnderecoComponent implements OnInit {
     var cep:string = this.enderecoForm.value.cep ? this.enderecoForm.value.cep.toString() : ""
     console.log("Cep: " + cep)
     if(cep.length == 8){
-      this.spinner.show();
       this.service.recuperarEnderecoPorCep(cep)
       .subscribe(endereco => {
           this.endereco = endereco as Endereco;
@@ -67,7 +64,6 @@ export class EnderecoComponent implements OnInit {
       error => {
         console.log("Error: " + error);
       });
-      this.spinner.hide();
     }
   }
 

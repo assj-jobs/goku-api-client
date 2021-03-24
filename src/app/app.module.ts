@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './views/home/home.module';
@@ -62,7 +61,6 @@ const APP_CONTAINERS = [
     TabsModule.forRoot(),
     ChartsModule,    
     KeycloakAngularModule,
-    NgxSpinnerModule,
     SharedModule,
     HomeModule
   ],
