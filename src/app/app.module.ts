@@ -23,7 +23,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
   
     keycloak.init({
       config: {
-        url: 'http://54.165.133.5:8080/auth',
+        url: 'https://54.165.133.5:8080/auth',
         realm: 'goku',
         clientId: 'goku-web-client',
       },
